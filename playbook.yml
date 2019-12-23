@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+    packages:
+      - wget
+      - git
+      - httpd
+  tasks:
+  - name: add packages
+    yum: name="{{item}}" state=present
+    with_items: "{{ packages }}"     
